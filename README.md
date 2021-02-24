@@ -1,7 +1,6 @@
-# README
+# Plantera
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An app to help you buy and sell plants
 
 Things you may want to cover:
 
