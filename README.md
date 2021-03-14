@@ -2,6 +2,10 @@
 
 An app to help you buy and sell plants
 
+## TODO
+* User logout
+* Page navigation
+
 Things you may want to cover:
 
 * Ruby version
