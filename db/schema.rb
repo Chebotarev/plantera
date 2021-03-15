@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_14_203234) do
+ActiveRecord::Schema.define(version: 2021_03_14_235321) do
+
+  create_table "plant_species", force: :cascade do |t|
+    t.string "common_name"
+    t.string "scientific_name", null: false
+    t.integer "light_level", null: false
+    t.integer "watering_interval", null: false
+    t.text "care_instructions"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["common_name"], name: "index_plant_species_on_common_name"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
