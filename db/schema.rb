@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_03_14_235321) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["common_name"], name: "index_plant_species_on_common_name"
+    t.index ["scientific_name"], name: "index_plant_species_on_scientific_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
