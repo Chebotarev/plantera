@@ -7,5 +7,18 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import "channels"
 
+import 'jquery'
+import '@popperjs/core'
+import { Dropdown } from 'bootstrap';
+
 Rails.start()
 Turbolinks.start()
+
+document.addEventListener("turbolinks:load", function() {
+    $(function () {
+        // $('[data-toggle="dropdown"]').dropdown()
+        // $('[data-toggle="popover"]').popover()
+    Array.from(document.querySelectorAll('.dropdown-toggle'))
+        .forEach(dropdownNode => new Dropdown(dropdownNode))
+    })
+})
