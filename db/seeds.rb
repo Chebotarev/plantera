@@ -15,3 +15,13 @@ PlantSpecies.find_or_create_by!(
     Do not overwater to avoid root rot. Ensure the pot is big enough for the growth
     CARE
 )
+
+PlantSpecies.find_or_create_by!(
+    common_name: 'Spider plant',
+    scientific_name: 'Chlorophytum comosum',
+    light_level: 2,
+    watering_interval: 432000,
+    care_instructions: <<-CARE
+    Do not overwater to avoid root rot. Ensure the pot is big enough for the growth
+    CARE
+)
