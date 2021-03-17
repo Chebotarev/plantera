@@ -1,2 +1,13 @@
-<h1>PlantSpecies#show</h1>
-<p>Find me in app/views/plant_species/show.html.erb</p>
+<main clas="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><%= @plant_species.scientific_name %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= @plant_species.common_name %></h6>
+                    <p class="card-text"><%= @plant_species.care_instructions %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
