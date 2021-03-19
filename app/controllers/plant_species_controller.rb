@@ -32,6 +32,16 @@ class PlantSpeciesController < ApplicationController
   end
 
   def destroy
+    @plant_species = PlantSpecies.find(params[:id])
+
+    if @plant_species.destroy
+      flash[:notice] = "Deleted #{@plant_species.scientific_name}"
+    else
+      flash[:alerts] = ["Failed to delete #{@plant_species.scientific_name}"]
+      @plant_species.errors.full_messages.each { |error| flash[:alerts].push(error) }
+    end
+
+    redirect_to plant_species_index_url
   end
 
   private
