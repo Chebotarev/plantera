@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  layout false
+  before_action :set_disable_header
+
+  protected
+
+  def set_disable_header
+    @disable_header = true
+  end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
