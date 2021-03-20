@@ -1,15 +1,27 @@
 
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 20rem;">
     <div class="card-body">
         <h5 class="card-title"><%= plant_species.scientific_name %></h5>
         <h6 class="card-subtitle mb-2 text-muted"><%= plant_species.common_name %></h6>
-        <div class="btn-group">
-            <%= link_to "Show", plant_species_url(plant_species),
-                class: "card-link btn btn-primary" %>
-            <%= link_to "Edit", edit_plant_species_url(plant_species),
-            class: "card-link btn btn-secondary" %>
-            <%= form_with url: plant_species_url(plant_species), method: :delete do |form| %>
-                <%= form.submit "Delete", class: "btn btn-danger" %>
+        <% if local_assigns[:details] && details %>
+            <hr>
+            <h6>Care Instructions</h6>
+            <p class="card-text"><%= @plant_species.care_instructions %></p>
+        <% end %>
+
+        <div class="d-flex justify-content-between">
+            <% if local_assigns[:btns] && btns.include?(:show) %>
+                <%= link_to "Show", plant_species_url(plant_species),
+                    class: "card-link btn btn-primary" %>
+            <% end %>
+            <% if local_assigns[:btns] && btns.include?(:edit) %>
+                <%= link_to "Edit", edit_plant_species_url(plant_species),
+                class: "card-link btn btn-secondary" %>
+            <% end %>
+            <% if local_assigns[:btns] && btns.include?(:delete) %>
+                <%= form_with url: plant_species_url(plant_species), method: :delete do |form| %>
+                    <%= form.submit "Delete", class: "btn btn-danger" %>
+                <% end %>
             <% end %>
         </div>
     </div>

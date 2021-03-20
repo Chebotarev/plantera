@@ -1,13 +1,8 @@
-<main clas="container-fluid">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title"><%= @plant_species.scientific_name %></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><%= @plant_species.common_name %></h6>
-                    <p class="card-text"><%= @plant_species.care_instructions %></p>
-                </div>
-            </div>
+<main clas="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-auto">
+            <%= render  partial: 'plant_species/card',
+                        locals: { plant_species: @plant_species, btns: [:edit, :delete], details: true} %>
         </div>
     </div>
 </main>

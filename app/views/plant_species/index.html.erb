@@ -1,17 +1,22 @@
-<div class="container-md">
-    <h1>Plant Species</h1>
-
+<div class="container">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col">
+            <h1>Plant Species</h1>
+        </div>
+    </div>
+
+    <div class="row gy-2">
+        <div class="col">
             <%= link_to "Add New", new_plant_species_url, class: "btn btn-success" %>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row gy-2">
         <% @plant_species.each do |plant_species| %>
-        <div class="col col-md-4 me-auto">
-            <%= render partial: 'plant_species/card', locals: { plant_species: plant_species } %>
-        </div>
+            <div class="col col-md-4 me-auto">
+                <%= render  partial: 'plant_species/card',
+                            locals: { plant_species: plant_species, btns: [:show] } %>
+            </div>
         <% end %>
     </div>
 </div>

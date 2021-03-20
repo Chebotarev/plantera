@@ -4,17 +4,24 @@ class PlantSpeciesController < ApplicationController
     @plant_species = PlantSpecies.all
   end
 
+  def new
+    @plant_species = PlantSpecies.new
+  end
+
   def create
-    plant_species = PlantSpecies.new(plant_species_params)
+    @plant_species = PlantSpecies.new(plant_species_params)
 
     # Temp hardcode of water/light level
-    plant_species.light_level = 1
-    plant_species.watering_interval = 1
+    @plant_species.light_level = 1
+    @plant_species.watering_interval = 1
 
-    if plant_species.save
-      redirect_to plant_species_url(plant_species.id)
+    if @plant_species.save
+      flash[:notice] = "Saved new plant species"
+      redirect_to plant_species_url(@plant_species.id)
     else
-      fail
+      flash[:alerts] = ['Failed to save new plant species']
+      @plant_species.errors.full_messages.each { |error| flash[:alerts].push(error) }
+      render :new
     end
   end
 
@@ -24,10 +31,6 @@ class PlantSpeciesController < ApplicationController
 
   def edit
     @plant_species = PlantSpecies.find(params[:id])
-  end
-
-  def new
-    @plant_species = PlantSpecies.new
   end
 
   def update
