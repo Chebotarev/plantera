@@ -7,6 +7,7 @@ import Turbolinks from "turbolinks"
 import "channels"
 
 import { Dropdown } from 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 Rails.start()
 Turbolinks.start()
