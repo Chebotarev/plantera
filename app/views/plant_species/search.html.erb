@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <h1>Search Results:</h1>
+
+        <p>Found <%= @found_plant_species.count %> results</p>
+    </div>
+
+    <div class="row">
+        <% @found_plant_species.each do |plant_species| %>
+            <%= render partial: 'plant_species/card', locals: { plant_species: plant_species } %>
+        <% end %>
+    </div>
+</div>

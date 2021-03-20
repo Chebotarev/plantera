@@ -56,7 +56,15 @@ class PlantSpeciesController < ApplicationController
     redirect_to plant_species_index_url
   end
 
+  def search
+    @found_plant_species = PlantSpecies.with_scientific_name_like(query).or(PlantSpecies.with_common_name_like(query))
+  end
+
   private
+
+  def query
+    @query ||= params[:query]
+  end
 
   def plant_species_params
     params.require(:plant_species).permit(:scientific_name, :common_name, :care_instructions)

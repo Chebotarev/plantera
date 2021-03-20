@@ -5,11 +5,9 @@ class PlantSpecies < ApplicationRecord
   validates :watering_interval, presence: true
 
   enum light_level: { low: 0, medium: 1, high: 2 }
-  before_destroy :prevent_destroy
 
-  private
-  def prevent_destroy
-    errors.add(:base, message: "Don't do that")
-    throw(:abort)
-  end
+  scope :with_scientific_name_like,
+        ->(search_name) { where('LOWER(scientific_name) LIKE :search', search: "%#{search_name}%") }
+
+  scope :with_common_name_like, ->(search_name) { where('LOWER(common_name) LIKE :search', search: "%#{search_name}%") }
 end

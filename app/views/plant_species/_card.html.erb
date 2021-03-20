@@ -1,0 +1,16 @@
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title"><%= plant_species.scientific_name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= plant_species.common_name %></h6>
+        <div class="btn-group">
+            <%= link_to "Show", plant_species_url(plant_species),
+                class: "card-link btn btn-primary" %>
+            <%= link_to "Edit", edit_plant_species_url(plant_species),
+            class: "card-link btn btn-secondary" %>
+            <%= form_with url: plant_species_url(plant_species), method: :delete do |form| %>
+                <%= form.submit "Delete", class: "btn btn-danger" %>
+            <% end %>
+        </div>
+    </div>
+</div>

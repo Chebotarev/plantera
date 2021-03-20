@@ -6,5 +6,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  resources 'plant_species'
+  resources 'plant_species' do
+    collection do
+      get 'search'
+    end
+  end
 end
