@@ -1,0 +1,8 @@
+<div class="container-fluid">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">Alert!</h4>
+
+        <%= alerts.map { |alert| "<p>#{alert}</p>" }.join("<hr>").html_safe %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>

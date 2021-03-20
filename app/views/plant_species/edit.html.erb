@@ -1,2 +1,8 @@
-<h1>PlantSpecies#edit</h1>
-<p>Find me in app/views/plant_species/edit.html.erb</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <h1>Update "<%= @plant_species.scientific_name %>"</h1>
+            <%= render partial: 'plant_species/form', locals: { btn_name: "Update", plant_species: @plant_species } %>
+        </div>
+    </div>
+</div>

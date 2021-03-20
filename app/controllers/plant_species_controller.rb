@@ -4,7 +4,7 @@ class PlantSpeciesController < ApplicationController
   end
 
   def create
-    plant_species = PlantSpecies.new(new_plant_species_params)
+    plant_species = PlantSpecies.new(plant_species_params)
 
     # Temp hardcode of water/light level
     plant_species.light_level = 1
@@ -22,6 +22,7 @@ class PlantSpeciesController < ApplicationController
   end
 
   def edit
+    @plant_species = PlantSpecies.find(params[:id])
   end
 
   def new
@@ -29,6 +30,16 @@ class PlantSpeciesController < ApplicationController
   end
 
   def update
+    @plant_species = PlantSpecies.find(params[:id])
+
+    if @plant_species.update(plant_species_params)
+      flash[:notice] = "Plant Species #{@plant_species.scientific_name} updated!"
+      redirect_to plant_species_url(@plant_species)
+    else
+      flash[:alerts] = ['Failed to update plant species']
+      @plant_species.errors.full_messages.each { |error| flash[:alerts].push(error) }
+      render :edit
+    end
   end
 
   def destroy
@@ -46,7 +57,7 @@ class PlantSpeciesController < ApplicationController
 
   private
 
-  def new_plant_species_params
+  def plant_species_params
     params.require(:plant_species).permit(:scientific_name, :common_name, :care_instructions)
   end
 end

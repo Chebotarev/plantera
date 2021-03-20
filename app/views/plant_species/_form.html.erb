@@ -1,0 +1,10 @@
+<%= form_with(model: plant_species) do |form| %>
+    <%= form.label :scientific_name, "Scientific Name", class: "form-label" %>
+    <%= form.text_field :scientific_name, class: "form-control" %>
+    <%= form.label :common_name, "Common Name", class: "form-label" %>
+    <%= form.text_field :common_name, class: "form-control" %>
+    <%= form.label :care_instructions, "Care Instructions", class: "form-label" %>
+    <%= form.text_area :care_instructions, class: "form-control" %>
+
+    <%= form.submit btn_name, class: "btn btn-success" %>
+<% end %>

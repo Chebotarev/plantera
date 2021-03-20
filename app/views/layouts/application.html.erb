@@ -14,17 +14,9 @@
 
 <body>
     <%= render partial: 'layouts/header' unless @disable_header %>
+    <%= render partial: 'layouts/notice', locals: { notice: flash[:notice] }  if flash[:notice] %>
+    <%= render partial: 'layouts/alerts', locals: { alerts: flash[:alerts] }  if flash[:alerts] %>
 
-    <% if flash[:alerts] %>
-        <div class="container-fluid">
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <h4 class="alert-heading">Alert!</h4>
-
-                <%= flash[:alerts].map { |alert| "<p>#{alert}</p>" }.join("<hr>").html_safe %>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        </div>
-    <% end %>
     <%= yield %>
 </body>
 
