@@ -3,6 +3,7 @@ class CollectedPlantsController < ApplicationController
   end
 
   def index
+    @collected_plants = current_user.collected_plants.includes(:species)
   end
 
   def destroy

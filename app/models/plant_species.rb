@@ -12,4 +12,10 @@ class PlantSpecies < ApplicationRecord
   scope :with_common_name_like, ->(search_name) { where('LOWER(common_name) LIKE :search', search: "%#{search_name}%") }
 
   has_many :collected_plants, foreign_key: 'species_id'
+
+  def name
+    return "#{common_name} (#{scientific_name})" if common_name
+
+    scientific_name
+  end
 end

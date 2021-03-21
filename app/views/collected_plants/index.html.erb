@@ -1,2 +1,27 @@
-<h1>CollectedPlants#index</h1>
-<p>Find me in app/views/collected_plants/index.html.erb</p>
+<div class="container">
+    <h1>My Plant Collection</h1>
+
+    <div class="accordion" id="accordionExample">
+        <% @collected_plants.each do |plant| %>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <%= plant.name %>
+                </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body row">
+                    <div class="col-md">
+                    
+                    </div>
+
+                    <div class="col-md">
+                        <h3>Species Info</h3>
+                        <%= render partial: 'plant_species/card', locals: { plant_species: plant.species, details: true } %>
+                    </div>
+                </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
