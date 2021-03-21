@@ -12,7 +12,7 @@ class PlantSpeciesController < ApplicationController
     @plant_species = PlantSpecies.new(plant_species_params)
 
     if @plant_species.save
-      flash[:notice] = "Saved new plant species"
+      flash[:notice] = 'Saved new plant species'
       redirect_to plant_species_url(@plant_species.id)
     else
       flash[:alerts] = ['Failed to save new plant species']

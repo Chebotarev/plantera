@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_14_235321) do
+ActiveRecord::Schema.define(version: 2021_03_21_174304) do
+
+  create_table "collected_plants", force: :cascade do |t|
+    t.string "nick_name"
+    t.integer "species_id", null: false
+    t.integer "owner_id", null: false
+    t.datetime "last_time_watered"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["last_time_watered"], name: "index_collected_plants_on_last_time_watered"
+    t.index ["nick_name"], name: "index_collected_plants_on_nick_name"
+    t.index ["owner_id"], name: "index_collected_plants_on_owner_id"
+    t.index ["species_id"], name: "index_collected_plants_on_species_id"
+  end
 
   create_table "plant_species", force: :cascade do |t|
     t.string "common_name"
@@ -38,4 +51,6 @@ ActiveRecord::Schema.define(version: 2021_03_14_235321) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "collected_plants", "plant_species", column: "species_id"
+  add_foreign_key "collected_plants", "users", column: "owner_id"
 end

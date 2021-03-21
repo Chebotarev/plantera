@@ -12,5 +12,5 @@
 
 # These inflection rules are supported but not enabled by default:
 ActiveSupport::Inflector.inflections(:en) do |inflect|
-    inflect.uncountable(%w(plant_species))
+    inflect.uncountable(%w[plant_species species])
 end
