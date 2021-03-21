@@ -10,7 +10,7 @@ PlantSpecies.find_or_create_by!(
     common_name: 'Snake plant',
     scientific_name: 'Dracaena trifasciata',
     light_level: 2,
-    watering_interval: 432000,
+    watering_interval: 10,
     care_instructions: <<-CARE
     Do not overwater to avoid root rot. Ensure the pot is big enough for the growth
     CARE
@@ -20,7 +20,27 @@ PlantSpecies.find_or_create_by!(
     common_name: 'Spider plant',
     scientific_name: 'Chlorophytum comosum',
     light_level: 2,
-    watering_interval: 432000,
+    watering_interval: 10,
+    care_instructions: <<-CARE
+    Do not overwater to avoid root rot. Ensure the pot is big enough for the growth
+    CARE
+)
+
+PlantSpecies.find_or_create_by!(
+    common_name: 'Swiss cheese plant',
+    scientific_name: 'Monstera deliciosa',
+    light_level: 1,
+    watering_interval: 5,
+    care_instructions: <<-CARE
+    Do not overwater to avoid root rot. Ensure the pot is big enough for the growth
+    CARE
+)
+
+PlantSpecies.find_or_create_by!(
+    common_name: 'ZZ plant',
+    scientific_name: 'Zamioculcas zamiifolia',
+    light_level: 1,
+    watering_interval: 5,
     care_instructions: <<-CARE
     Do not overwater to avoid root rot. Ensure the pot is big enough for the growth
     CARE

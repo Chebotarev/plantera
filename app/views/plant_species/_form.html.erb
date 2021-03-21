@@ -1,10 +1,29 @@
 <%= form_with(model: plant_species) do |form| %>
-    <%= form.label :scientific_name, "Scientific Name", class: "form-label" %>
-    <%= form.text_field :scientific_name, class: "form-control" %>
-    <%= form.label :common_name, "Common Name", class: "form-label" %>
-    <%= form.text_field :common_name, class: "form-control" %>
-    <%= form.label :care_instructions, "Care Instructions", class: "form-label" %>
-    <%= form.text_area :care_instructions, class: "form-control" %>
+    <div class="mb-3">
+        <%= form.label :scientific_name, "Scientific Name", class: "form-label" %>
+        <%= form.text_field :scientific_name, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+        <%= form.label :common_name, "Common Name", class: "form-label" %>
+        <%= form.text_field :common_name, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+        <%= form.label :care_instructions, "Care Instructions", class: "form-label" %>
+        <%= form.text_area :care_instructions, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+        <%= form.label :light_level, "Light Level", class: "form-label" %>
+        <%= form.select :light_level, light_level_select_options, { selected: plant_species.light_level },
+                        class: "form-select", 'aria-label' => ".form-select-md" %>
+    </div>
+
+    <div class="mb-3">
+        <%= form.label :watering_interval, "Watering Interval (Days)", class: "form-label" %>
+        <%= form.number_field :watering_interval, class: "form-control" %>
+    </div>
 
     <%= form.submit btn_name, class: "btn btn-success" %>
 <% end %>

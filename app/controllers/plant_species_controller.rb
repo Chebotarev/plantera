@@ -11,10 +11,6 @@ class PlantSpeciesController < ApplicationController
   def create
     @plant_species = PlantSpecies.new(plant_species_params)
 
-    # Temp hardcode of water/light level
-    @plant_species.light_level = 1
-    @plant_species.watering_interval = 1
-
     if @plant_species.save
       flash[:notice] = "Saved new plant species"
       redirect_to plant_species_url(@plant_species.id)
@@ -70,6 +66,6 @@ class PlantSpeciesController < ApplicationController
   end
 
   def plant_species_params
-    params.require(:plant_species).permit(:scientific_name, :common_name, :care_instructions)
+    params.require(:plant_species).permit(:scientific_name, :common_name, :care_instructions, :light_level, :watering_interval)
   end
 end

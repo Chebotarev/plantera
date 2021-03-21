@@ -7,6 +7,11 @@
             <hr>
             <h6>Care Instructions</h6>
             <p class="card-text"><%= @plant_species.care_instructions %></p>
+            <hr>
+            <h6>Light Level</h6>
+            <p class="card-text"><%= @plant_species.light_level.titleize %></p>
+            <h6>Watering Interval</h6>
+            <p class="card-text">Once every <strong><%= @plant_species.watering_interval %> day(s)</strong></p>
         <% end %>
 
         <div class="d-flex justify-content-between">
