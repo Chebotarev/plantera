@@ -1,5 +1,13 @@
 class CollectedPlantsController < ApplicationController
-  def new
+  def create
+    plant = CollectedPlant.new(collected_plant_params)
+    plant.owner = current_user
+    if plant.save
+      flash[:notice] = 'New plant added to collection'
+      redirect_to collected_plants_url
+    else
+      fail
+    end
   end
 
   def index
@@ -10,5 +18,11 @@ class CollectedPlantsController < ApplicationController
   end
 
   def update
+  end
+
+  private
+
+  def collected_plant_params
+    params.require(:collected_plant).permit(:species_id, :nick_name)
   end
 end

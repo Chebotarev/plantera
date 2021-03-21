@@ -23,6 +23,11 @@
                 <%= link_to "Edit", edit_plant_species_url(plant_species),
                 class: "card-link btn btn-secondary" %>
             <% end %>
+            <% if local_assigns[:btns] && btns.include?(:add) %>
+                <% modal_id = "addCollectionBtn-#{plant_species.id}" %>
+                <%= button_tag "Add", type: "button", class: "btn btn-success", data: { 'bs-toggle' => 'modal', 'bs-target' => "\##{modal_id}" }  %>
+                <%= render partial: 'collected_plants/new_modal', locals: { species: plant_species, id: modal_id, collected_plant: collected_plant } %>
+            <% end %>
             <% if local_assigns[:btns] && btns.include?(:delete) %>
                 <%= form_with url: plant_species_url(plant_species), method: :delete do |form| %>
                     <%= form.submit "Delete", class: "btn btn-danger" %>

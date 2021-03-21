@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources 'collected_plants', only: %i[new index destroy update]
+  resources 'collected_plants', only: %i[new create index destroy update]
 end

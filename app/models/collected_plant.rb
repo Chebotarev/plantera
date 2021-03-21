@@ -3,10 +3,6 @@ class CollectedPlant < ApplicationRecord
   belongs_to :owner, class_name: 'User', inverse_of: :collected_plants
 
   def name
-    if nick_name
-      return "#{nick_name} - #{species.name}"
-    end
-
-    species.name
+    "#{nick_name.presence || '[UNNAMED]'} - #{species.name}"
   end
 end

@@ -1,0 +1,22 @@
+<div class="modal fade" id="<%= id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Plant to My Collection</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <%= form_with(model: collected_plant) do |form| %>
+                    <%= form.hidden_field :species_id, value: species.id %>
+
+                    <div class="mb-3">
+                        <%= form.label :nick_name, "Nick Name", class: "form-label" %>
+                        <%= form.text_field :nick_name, class: "form-control" %>
+                    </div>
+
+                    <%= form.submit "Add", class: "btn btn-success" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
