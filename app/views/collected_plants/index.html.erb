@@ -14,11 +14,14 @@
                 <div id="<%= collapseId %>" class="accordion-collapse collapse" aria-labelledby="<%= labelId %>" data-bs-parent="#plantCollectionAccordion">
                 <div class="accordion-body row">
                     <div class="col-md">
-                    
+                        <h4>Last Watered</h4> 
+                        <p class="text-<%= water_status_color(plant) %>"><%= last_watered_date_in_words(plant) %></p>
+
+                        <h4>Added to Collection</h4>
                     </div>
 
                     <div class="col-md">
-                        <h3>Species Info</h3>
+                        <h4>Species Info</h4>
                         <%= render partial: 'plant_species/card', locals: { plant_species: plant.species, details: true } %>
                     </div>
                 </div>

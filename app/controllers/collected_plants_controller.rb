@@ -6,7 +6,9 @@ class CollectedPlantsController < ApplicationController
       flash[:notice] = 'New plant added to collection'
       redirect_to collected_plants_url
     else
-      fail
+      flash[:alerts] = ['Failed to add new plant to collection']
+      plant.errors.full_messages.each { |error| flash[:alerts].push(error) }
+      redirect_to plant_species_index_url
     end
   end
 
