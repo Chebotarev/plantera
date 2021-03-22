@@ -16,6 +16,7 @@
     <%= render partial: 'layouts/header', locals: { active: @active_header } unless @disable_header %>
     <%= render partial: 'layouts/notice', locals: { notice: flash[:notice] }  if flash[:notice] %>
     <%= render partial: 'layouts/alerts', locals: { alerts: flash[:alerts] }  if flash[:alerts] %>
+    <%= render partial: 'layouts/alerts', locals: { alerts: [flash.alert }  if flash.alert %>
 
     <%= yield %>
 </body>
