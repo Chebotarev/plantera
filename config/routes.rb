@@ -1,6 +1,6 @@
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  root to: 'home#index'
+  root to: 'plant_species#index'
   get 'home/index'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -12,5 +12,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources 'collected_plants', only: %i[new create index destroy update]
+  resources 'collected_plants', only: %i[new create index destroy update] do
+    collection do
+      get 'watering_report'
+    end
+  end
 end

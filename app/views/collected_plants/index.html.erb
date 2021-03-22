@@ -1,30 +1,34 @@
 <div class="container">
     <h1>My Plant Collection</h1>
+    <%= link_to "Generate Watering Report", watering_report_collected_plants_url, class: 'btn btn-primary' %>
 
     <div class="accordion" id="plantCollectionAccordion">
         <% @collected_plants.each do |plant| %>
             <% labelId = "accordionHeader-#{plant.id}" %>
             <% collapseId = "collapsePlant-#{plant.id}" %>
+            <% opened =  @opened == plant.id %>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="<%= labelId %>">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<%= collapseId %>" aria-expanded="false" aria-controls="<%= collapseId %>">
-                    <%= plant.name %>
-                </button>
+                    <button class="accordion-button <%= "collapsed" unless opened %>" type="button" data-bs-toggle="collapse" data-bs-target="#<%= collapseId %>" aria-expanded="<%= opened %>" aria-controls="<%= collapseId %>">
+                        <%= plant.name %>
+                    </button>
                 </h2>
-                <div id="<%= collapseId %>" class="accordion-collapse collapse" aria-labelledby="<%= labelId %>" data-bs-parent="#plantCollectionAccordion">
-                <div class="accordion-body row">
-                    <div class="col-md">
-                        <h4>Last Watered</h4> 
-                        <p class="text-<%= water_status_color(plant) %>"><%= last_watered_date_in_words(plant) %></p>
 
-                        <h4>Added to Collection</h4>
-                    </div>
+                <div id="<%= collapseId %>" class="accordion-collapse collapse <%= "show" if opened %>" aria-labelledby="<%= labelId %>" data-bs-parent="#plantCollectionAccordion">
+                    <div class="accordion-body row">
+                        <div class="col-md">
+                            <h4>Last Watered</h4> 
+                            <p class="text-<%= water_status_color(plant) %>"><%= last_watered_date_in_words(plant) %></p>
 
-                    <div class="col-md">
-                        <h4>Species Info</h4>
-                        <%= render partial: 'plant_species/card', locals: { plant_species: plant.species, details: true } %>
+                            <h4>Added to Collection</h4>
+                            <p><%= plant.created_at %></p>
+                        </div>
+
+                        <div class="col-md">
+                            <h4>Species Info</h4>
+                            <%= render partial: 'plant_species/card', locals: { plant_species: plant.species, details: true } %>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         <% end %>

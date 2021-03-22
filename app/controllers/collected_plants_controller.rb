@@ -14,12 +14,17 @@ class CollectedPlantsController < ApplicationController
 
   def index
     @collected_plants = current_user.collected_plants.includes(:species)
+    @opened = params[:opened].to_i
   end
 
   def destroy
   end
 
   def update
+  end
+
+  def watering_report
+    @plants = current_user.collected_plants.order(last_time_watered: :desc)
   end
 
   private

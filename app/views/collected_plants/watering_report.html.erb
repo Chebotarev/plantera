@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>Watering Report</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nick Name</th>
+                <th scope="col">Species</th>
+                <th scope="col">Watering Status</th>
+                <th scope="col">Last Time Watered</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @plants.each.with_index do |plant, idx| %>
+                <tr class="table-<%= water_status_color(plant) %>">
+                    <th scope="row"><%= idx + 1 %></th>
+                    <td><%= link_to plant.nick_name, collected_plants_url(opened: plant.id) %></td>
+                    <td><%= plant.species.name %></td>
+                    <td><%= plant.watering_status %></td>
+                    <td><%= plant.last_time_watered %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
