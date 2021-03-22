@@ -1,5 +1,5 @@
 class CollectedPlantsController < ApplicationController
-  before_action :set_active_header
+  before_action :authenticate_user!, :set_active_header
 
   def create
     plant = CollectedPlant.new(collected_plant_params)

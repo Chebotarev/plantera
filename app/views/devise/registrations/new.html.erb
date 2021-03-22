@@ -1,4 +1,12 @@
 <div class="container">
+    <div class="row">
+        <div class="col">
+            <% if flash.alert %>
+                <%= render partial: 'layouts/alerts', locals: { alerts: [flash.alert] } %>
+            <% end %>
+        </div>
+    </div>
+
     <div class="row d-flex justify-content-center">
         <div class="col-md-auto">
             <h2>Sign up</h2>

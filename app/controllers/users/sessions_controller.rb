@@ -2,6 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   before_action :set_disable_header
+  skip_before_action :verify_authenticity_token, only: :create
 
   protected
 
