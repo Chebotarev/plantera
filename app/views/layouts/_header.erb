@@ -23,7 +23,7 @@
             <li><hr class="dropdown-divider"></li>
             <li>
             <%= form_with(url: destroy_user_session_path , method: :delete) do |f| %>
-              <button class="dropdown-item btn btn-outline-danger" type="submit">Logout</button>
+              <%= f.submit "Logout", class: 'dropdown-item btn btn-outline-danger' %>
             <% end %>
             </li>
           </ul>
