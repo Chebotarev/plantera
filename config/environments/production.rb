@@ -116,5 +116,5 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # Configure session storage
-  Rails.application.config.session_store :cookie_store, key: '_plantera_session', domain: ".chebotarev.io"
+  Rails.application.config.session_store :cookie_store, key: '_plantera_session', domain: :all
 end
