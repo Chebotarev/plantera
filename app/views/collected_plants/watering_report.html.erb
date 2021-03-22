@@ -9,6 +9,7 @@
                 <th scope="col">Species</th>
                 <th scope="col">Watering Status</th>
                 <th scope="col">Last Time Watered</th>
+                <th scope="col">Next Watering</th>
             </tr>
         </thead>
 
@@ -19,7 +20,8 @@
                     <td><%= link_to plant.nick_name, collected_plants_url(opened: plant.id) %></td>
                     <td><%= plant.species.name %></td>
                     <td><%= plant.watering_status %></td>
-                    <td><%= plant.last_time_watered %></td>
+                    <td><%= formatted_water_time(plant.last_time_watered) %></td>
+                    <td><%= formatted_water_time(plant.next_time_to_water) %></td>
                 </tr>
             <% end %>
         </tbody>

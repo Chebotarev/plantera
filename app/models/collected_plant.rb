@@ -1,4 +1,5 @@
 class CollectedPlant < ApplicationRecord
+  validate :last_time_watered_is_date
   belongs_to :species, class_name: 'PlantSpecies', inverse_of: :collected_plants
   belongs_to :owner, class_name: 'User', inverse_of: :collected_plants
 
@@ -6,24 +7,39 @@ class CollectedPlant < ApplicationRecord
     "#{nick_name.presence || '[UNNAMED]'} - #{species.name}"
   end
 
-  # def next_water_time
-  #   return if last_time_watered.nil?
+  def next_time_to_water
+    return if last_time_watered.nil?
 
-  #   last_time_watered + species.watering_interval.days
-  # end
+    last_time_watered + species.watering_interval.days
+  end
+
+  def hours_underwatered
+    diff = (Time.current - next_time_to_water)
+    (diff / 1.hour).round
+  end
 
   def needs_water?
     return false if last_time_watered.nil?
-    return true if last_time_watered > species.watering_interval.days.ago
+    return true if last_time_watered > next_time_to_water
 
     false
   end
 
   def watering_status
     return :unknown if last_time_watered.nil?
-    return :wanting if last_time_watered.between?(2.days.ago, Time.current)
-    return :deprived if last_time_watered > 3.days.ago
+    return :content if hours_underwatered.negative?
+    return :wanting if hours_underwatered.between?(0, 48)
 
-    :content
+    :deprived
+  end
+
+  private
+
+  def last_time_watered_is_date
+    return if last_time_watered.nil?
+
+    unless last_time_watered.is_a?(Time)
+      errors.add(:last_time_watered, 'must be a valid date')
+    end
   end
 end

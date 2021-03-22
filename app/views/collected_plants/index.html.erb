@@ -22,6 +22,12 @@
 
                             <h4>Added to Collection</h4>
                             <p><%= plant.created_at %></p>
+
+                            <h4>Actions</h4>
+                            <div class="btn-group">
+                                <%= button_to "Water Now", collected_plant_url(plant), method: :put, class: 'btn btn-primary' %>
+                                <%= button_to 'Remove', collected_plant_url(plant), method: :delete, class: "btn btn-danger" %>
+                            </div>
                         </div>
 
                         <div class="col-md">

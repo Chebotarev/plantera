@@ -18,9 +18,29 @@ class CollectedPlantsController < ApplicationController
   end
 
   def destroy
+    plant = current_user.collected_plants.find(params[:id])
+
+    if plant.destroy
+      flash[:notice] = 'Successfully removed plant from collection'
+    else
+      flash[:alerts] = ['Failed to remove plant from collection']
+      plant.errors.full_messages.each { |error| flash[:alerts].push(error) }
+    end
+
+    redirect_to collected_plants_url
   end
 
   def update
+    plant = current_user.collected_plants.find(params[:id])
+
+    if plant.update(last_time_watered: Time.current)
+      flash[:notice] = "Successfully watered #{plant.nick_name || 'plant'}"
+    else
+      flash[:alerts] = ['Failed to water plant from collection']
+      plant.errors.full_messages.each { |error| flash[:alerts].push(error) }
+    end
+
+    redirect_to collected_plants_url
   end
 
   def watering_report

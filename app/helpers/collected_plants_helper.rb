@@ -17,4 +17,10 @@ module CollectedPlantsHelper
 
         "#{time_ago_in_words(plant.last_time_watered).titleize} Ago"
     end
+
+    def formatted_water_time(datetime)
+        return if datetime.nil?
+
+        datetime.strftime('%a, %D')
+    end
 end

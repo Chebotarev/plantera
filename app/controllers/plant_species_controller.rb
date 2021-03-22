@@ -58,6 +58,7 @@ class PlantSpeciesController < ApplicationController
 
   def search
     @found_plant_species = PlantSpecies.with_scientific_name_like(query).or(PlantSpecies.with_common_name_like(query))
+    @collected_plant = CollectedPlant.new
   end
 
   private
