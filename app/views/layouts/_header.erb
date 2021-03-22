@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Plantera</a>
@@ -8,11 +7,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= link_to "Plant Species", plant_species_index_url, class: "nav-link" %>
+          <%= link_to "Plant Species", plant_species_index_url, class: "nav-link #{"active" if active == :plant_species}" %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "My Collection", collected_plants_url, class: "nav-link" %>
+          <%= link_to "My Collection", collected_plants_url, class: "nav-link #{"active" if active == :collected_plants}" %>
         </li>
 
         <li class="nav-item dropdown">

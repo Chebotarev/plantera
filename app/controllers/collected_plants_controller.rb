@@ -1,4 +1,6 @@
 class CollectedPlantsController < ApplicationController
+  before_action :set_active_header
+
   def create
     plant = CollectedPlant.new(collected_plant_params)
     plant.owner = current_user
@@ -51,5 +53,9 @@ class CollectedPlantsController < ApplicationController
 
   def collected_plant_params
     params.require(:collected_plant).permit(:species_id, :nick_name)
+  end
+
+  def set_active_header
+    @active_header ||= :collected_plants
   end
 end

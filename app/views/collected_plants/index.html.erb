@@ -1,6 +1,11 @@
 <div class="container">
     <h1>My Plant Collection</h1>
-    <%= link_to "Generate Watering Report", watering_report_collected_plants_url, class: 'btn btn-primary' %>
+
+    <% if @collected_plants.empty? %>
+        <%= render partial: 'collected_plants/no_collected_alert' %>
+    <% end %>
+
+    <%= link_to "Generate Watering Report", watering_report_collected_plants_url, class: 'btn btn-primary gy-2' %>
 
     <div class="accordion" id="plantCollectionAccordion">
         <% @collected_plants.each do |plant| %>

@@ -1,6 +1,10 @@
 <div class="container">
     <h1>Watering Report</h1>
 
+    <% if @plants.empty? %>
+        <%= render partial: 'collected_plants/no_collected_alert' %>
+    <% end %>
+
     <table class="table table-hover">
         <thead>
             <tr>

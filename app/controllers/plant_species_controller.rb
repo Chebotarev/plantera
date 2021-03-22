@@ -1,5 +1,6 @@
 class PlantSpeciesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :set_active_header
+
   def index
     @plant_species = PlantSpecies.all
     @collected_plant = CollectedPlant.new
@@ -69,5 +70,9 @@ class PlantSpeciesController < ApplicationController
 
   def plant_species_params
     params.require(:plant_species).permit(:scientific_name, :common_name, :care_instructions, :light_level, :watering_interval)
+  end
+
+  def set_active_header
+    @active_header ||= :plant_species
   end
 end
