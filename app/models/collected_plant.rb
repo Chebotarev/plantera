@@ -1,3 +1,27 @@
+# == Schema Information
+#
+# Table name: collected_plants
+#
+#  id                :integer          not null, primary key
+#  last_time_watered :datetime
+#  nick_name         :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  owner_id          :integer          not null
+#  species_id        :integer          not null
+#
+# Indexes
+#
+#  index_collected_plants_on_last_time_watered  (last_time_watered)
+#  index_collected_plants_on_nick_name          (nick_name)
+#  index_collected_plants_on_owner_id           (owner_id)
+#  index_collected_plants_on_species_id         (species_id)
+#
+# Foreign Keys
+#
+#  owner_id    (owner_id => users.id)
+#  species_id  (species_id => plant_species.id)
+#
 class CollectedPlant < ApplicationRecord
   validate :last_time_watered_is_date
   belongs_to :species, class_name: 'PlantSpecies', inverse_of: :collected_plants

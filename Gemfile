@@ -40,6 +40,7 @@ group :development, :test do
   %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
     gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main'
   end
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -56,6 +57,7 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'annotate'
 end
 
 group :test do

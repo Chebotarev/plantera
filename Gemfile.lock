@@ -109,6 +109,9 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    annotate (3.1.1)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     autoprefixer-rails (10.2.4.0)
       execjs
@@ -144,6 +147,11 @@ GEM
     diff-lcs (1.4.4)
     erubi (1.10.0)
     execjs (2.7.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -314,12 +322,14 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  annotate
   awesome_print
   bootsnap (>= 1.4.4)
   bootstrap (~> 5.0.0.beta2)
   byebug
   capybara (>= 3.26)
   devise
+  factory_bot_rails
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg
