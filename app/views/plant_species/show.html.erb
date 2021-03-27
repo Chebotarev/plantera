@@ -7,6 +7,21 @@
     </div>
 
     <div class="row">
+        <h2>New Comment</h2>
+
+        <%= form_with(model: Comment.new) do |form| %>
+            <%= form.hidden_field :commentable_id, value: @plant_species.id %>
+            <%= form.hidden_field :commentable_type, value: 'PlantSpecies' %>
+
+            <div class="mb-3">
+                <%= form.text_area :body, class: "form-control" %>
+            </div>
+
+            <%= form.submit 'Comment', class: 'btn btn-success' %>
+        <% end %>
+    </div>
+
+    <div class="row">
         <h2>Comments</h2>
 
         <% if @plant_species.comments.empty? %>
