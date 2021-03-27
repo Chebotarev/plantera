@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_27_175231) do
+ActiveRecord::Schema.define(version: 2021_03_27_182010) do
 
   create_table "collected_plants", force: :cascade do |t|
     t.string "nick_name"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 2021_03_27_175231) do
     t.index ["nick_name"], name: "index_collected_plants_on_nick_name"
     t.index ["owner_id"], name: "index_collected_plants_on_owner_id"
     t.index ["species_id"], name: "index_collected_plants_on_species_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body", null: false
+    t.string "commentable_type", null: false
+    t.integer "commentable_id", null: false
+    t.integer "author_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
   end
 
   create_table "plant_species", force: :cascade do |t|
@@ -55,4 +66,5 @@ ActiveRecord::Schema.define(version: 2021_03_27_175231) do
 
   add_foreign_key "collected_plants", "plant_species", column: "species_id"
   add_foreign_key "collected_plants", "users", column: "owner_id"
+  add_foreign_key "comments", "users", column: "author_id"
 end
