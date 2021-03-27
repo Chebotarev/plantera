@@ -3,5 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :rememberable, :validatable
 
+  validates :username, uniqueness: true, presence: true
+
   has_many :collected_plants, foreign_key: "owner_id"
 end

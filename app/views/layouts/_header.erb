@@ -19,6 +19,9 @@
             My Account
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><h5 class="dropdown-header">Username:</h5></li>
+            <li><h5 class="dropdown-header"><%= current_user.username %></h5></li>
+            <li><h5 class="dropdown-header">Email:</h5></li>
             <li><h5 class="dropdown-header"><%= current_user.email %></h5></li>
             <li><hr class="dropdown-divider"></li>
             <li>
