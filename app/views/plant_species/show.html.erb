@@ -1,25 +1,32 @@
-<main clas="container">
-    <div class="row d-flex justify-content-center">
+<div class="container">
+    <h1>"<%= @plant_species.scientific_name %>" Information</h1>
+    <div class="row">
         <div class="col-md-auto">
             <%= render  partial: 'plant_species/card',
                         locals: { plant_species: @plant_species, btns: [:edit, :delete], details: true} %>
         </div>
     </div>
 
+    <hr>
+
     <div class="row">
-        <h2>New Comment</h2>
+        <div class="col">
+            <h2>New Comment</h2>
 
-        <%= form_with(model: Comment.new) do |form| %>
-            <%= form.hidden_field :commentable_id, value: @plant_species.id %>
-            <%= form.hidden_field :commentable_type, value: 'PlantSpecies' %>
+            <%= form_with(model: Comment.new) do |form| %>
+                <%= form.hidden_field :commentable_id, value: @plant_species.id %>
+                <%= form.hidden_field :commentable_type, value: 'PlantSpecies' %>
 
-            <div class="mb-3">
-                <%= form.text_area :body, class: "form-control" %>
-            </div>
+                <div class="mb-3">
+                    <%= form.text_area :body, class: "form-control" %>
+                </div>
 
-            <%= form.submit 'Comment', class: 'btn btn-success' %>
-        <% end %>
+                <%= form.submit 'Comment', class: 'btn btn-success' %>
+            <% end %>
+        </div>
     </div>
+
+    <hr>
 
     <div class="row">
         <h2>Comments</h2>
@@ -27,11 +34,11 @@
         <% if @plant_species.comments.empty? %>
             <p>No comments yet</p>
         <% else%>
-            <ul class="list-group col">
+            <ul class="list-group" style="list-style: none">
                 <% @plant_species.comments.each do |comment| %>
                     <%= render partial: 'comments/list_item', locals: { comment: comment } %>
                 <% end %>
             </ul>
         <% end %>
     </div>
-</main>
+</div>
