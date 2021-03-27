@@ -5,4 +5,18 @@
                         locals: { plant_species: @plant_species, btns: [:edit, :delete], details: true} %>
         </div>
     </div>
+
+    <div class="row">
+        <h2>Comments</h2>
+
+        <% if @plant_species.comments.empty? %>
+            <p>No comments yet</p>
+        <% else%>
+            <ul class="list-group col">
+                <% @plant_species.comments.each do |comment| %>
+                    <%= render partial: 'comments/list_item', locals: { comment: comment } %>
+                <% end %>
+            </ul>
+        <% end %>
+    </div>
 </main>

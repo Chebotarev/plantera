@@ -24,7 +24,7 @@ class PlantSpeciesController < ApplicationController
   end
 
   def show
-    @plant_species = PlantSpecies.find(params[:id])
+    @plant_species = PlantSpecies.includes(comments: :author).find(params[:id])
   end
 
   def edit
