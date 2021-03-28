@@ -34,4 +34,6 @@ rails s
 6. Navigate to [localhost:3000](localhost:3000) to view the site
 
 
-## Maintenance
+## Production Maintenance
+
+The production deployment of Plantera is hosted through [Heroku](https://www.heroku.com/). This cloud interface provides access to manage the environment, database, server instance size and all other configurations. In order to manage this application, please request access from the owner of the Heroku project.
